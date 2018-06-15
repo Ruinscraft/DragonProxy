@@ -20,9 +20,12 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.dragonet.common.data.blocks.Block;
 import org.dragonet.common.data.blocks.GlobalBlockPalette;
+import org.dragonet.common.utilities.SkinFetcher;
 import org.dragonet.protocol.ProtocolInfo;
 import org.dragonet.proxy.commands.CommandRegister;
 import org.dragonet.proxy.commands.ConsoleCommandReader;
@@ -32,18 +35,12 @@ import org.dragonet.proxy.events.EventManager;
 import org.dragonet.proxy.network.RaknetInterface;
 import org.dragonet.proxy.network.SessionRegister;
 import org.dragonet.proxy.network.translator.SoundTranslator;
-import org.dragonet.proxy.utilities.ProxyLogger;
-import org.dragonet.proxy.utilities.MetricsManager;
 import org.dragonet.proxy.utilities.PluginManager;
+import org.dragonet.proxy.utilities.ProxyLogger;
 import org.dragonet.proxy.utilities.pingpassthrough.PingThread;
 import org.yaml.snakeyaml.Yaml;
 
 import com.github.steveice10.mc.protocol.MinecraftConstants;
-
-import co.aikar.timings.Timings;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.SystemUtils;
-import org.dragonet.common.utilities.SkinFetcher;
 
 public class DragonProxy {
 
@@ -240,9 +237,6 @@ public class DragonProxy {
         if (!authMode.equals("cls") && !authMode.equals("online") && !authMode.equals("offline") && !authMode.equals("hybrid"))
             logger.info("Invalid login 'mode' option detected, must be cls/online/offline. You set it to '" + authMode
                     + "'! ");
-
-        // Init metrics (https://bstats.org/plugin/server-implementation/DragonProxy)
-        new MetricsManager(this);
 
         // Init session and command stuff
         sessionRegister = new SessionRegister(this);
