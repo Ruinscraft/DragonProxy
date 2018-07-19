@@ -48,7 +48,7 @@ public final class Protocol {
         packets.put(MOB_EFFECT_PACKET, MobEffectPacket.class);
         packets.put(BOSS_EVENT_PACKET, BossEventPacket.class);
         packets.put(ADD_ITEM_ENTITY_PACKET, AddItemEntityPacket.class);
-        packets.put(MOVE_ENTITY_PACKET, MoveEntityPacket.class);
+        packets.put(MOVE_ENTITY_PACKET, MoveEntityAbsolutePacket.class);
         packets.put(MOVE_PLAYER_PACKET, MovePlayerPacket.class);
         packets.put(SET_ENTITY_MOTION_PACKET, SetEntityMotionPacket.class);
         packets.put(SET_PLAYER_GAME_TYPE_PACKET, SetPlayerGameTypePacket.class);
@@ -95,6 +95,8 @@ public final class Protocol {
         packets.put(RESOURCE_PACKS_INFO_PACKET, ResourcePacksInfoPacket.class);
         packets.put(RESOURCE_PACK_CLIENT_RESPONSE_PACKET, ResourcePackClientResponsePacket.class);
         packets.put(RESOURCE_PACK_STACK_PACKET, ResourcePackStackPacket.class);
+
+        packets.put(SET_LOCAL_PLAYER_AS_INITIALIZED_PACKET, SetLocalPlayerAsInitializedPacket.class);
 
         packets.put(BATCH_PACKET, BatchPacket.class);
     }
